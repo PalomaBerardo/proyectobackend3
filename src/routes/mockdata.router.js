@@ -1,9 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const { generateUsers, generateCompanies, assignCompaniesToUsers } = require('../utils/mockdata');
-const UserModel = require('../models/user.model');
-const CompanyModel = require('../models/company.model');
+const { Router } = require('express');
+const UserModel = require('../models/User');
+const CompanyModel = require('../models/Company');
 
+const router = Router();
 /* GET */
 router.get('/mockingcompanies', (req, res) => {
 const qty = parseInt(req.query.qty) || 10;

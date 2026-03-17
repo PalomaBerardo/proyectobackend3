@@ -12,7 +12,7 @@ async function generateUsers(qty = 1) {
 const hashed = await hashDefaultPassword();
 const users = [];
 for (let i = 0; i < qty; i++) {
-    const role = (i % 10 === 0) ? 'admin' : 'user'; // Aproximadamente 1 admin cada 10 usuarios
+    const role = (i % 10 === 0) ? 'admin' : 'user';
     users.push({
     _id: faker.database.mongodbObjectId(),
     first_name: faker.person.firstName(),

@@ -1,10 +1,15 @@
-const express = require('express');
-const router = express.Router();
-const CompanyModel = require('../models/company.model');
+const { Router } = require('express');
+const CompanyModel = require('../models/Company');
+
+const router = Router();
 
 router.get('/', async (req, res) => {
-const companies = await CompanyModel.find().populate('owner').lean();
-return res.json({ status: 'success', payload: companies });
+  try {
+    const companies = await CompanyModel.find().lean();
+    res.json({ status: 'success', payload: companies });
+  } catch (error) {
+    res.status(500).json({ status: 'error', message: 'Error al obtener empresas' });
+  }
 });
 
 module.exports = router;
